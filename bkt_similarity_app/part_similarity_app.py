@@ -105,8 +105,8 @@ def main():
     st.title("Bracket Similarity Map")
 
     dataset_options = {
-        "All predictors": "model.csv",
-        "Only Area & Volume": "model2.csv"
+        "All predictors": "bkt_similarity_app/model.csv",
+        "Only Area & Volume": "bkt_similarity_app/model2.csv"
     }
     selected_label = st.selectbox("Select model to use:", list(dataset_options.keys()))
     selected_file = dataset_options[selected_label]
@@ -114,8 +114,8 @@ def main():
     uploaded_file = resource_path(selected_file)
     
     if uploaded_file is not None:
-        # df = pd.read_csv(uploaded_file)
-        df = pd.read_csv(f"./{selected_file}")
+        df = pd.read_csv(uploaded_file)
+        
 
         selected_part = st.selectbox("Select a part to find similar ones:", ["Select a part"] + list(df['PART_NO'].unique()), index=0)
         top_n = st.slider("Number of similar parts to show:", 1, 20, 5)
