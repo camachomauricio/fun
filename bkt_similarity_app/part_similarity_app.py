@@ -114,7 +114,8 @@ def main():
     uploaded_file = resource_path(selected_file)
     
     if uploaded_file is not None:
-        df = pd.read_csv(uploaded_file)
+        # df = pd.read_csv(uploaded_file)
+        df = pd.read_csv(f"./{selected_file}")
 
         selected_part = st.selectbox("Select a part to find similar ones:", ["Select a part"] + list(df['PART_NO'].unique()), index=0)
         top_n = st.slider("Number of similar parts to show:", 1, 20, 5)
